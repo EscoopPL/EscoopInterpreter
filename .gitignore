@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# Don't for get .DS_STORE
+.DS_STORE
