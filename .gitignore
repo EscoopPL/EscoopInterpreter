@@ -33,3 +33,6 @@
 
 # Don't for get .DS_STORE
 .DS_STORE
+
+# Builds
+escoop
