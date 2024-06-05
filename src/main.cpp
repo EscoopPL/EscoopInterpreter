@@ -5,12 +5,13 @@ using namespace std;
 void parseOptions(char* argv[], int argc) {
   for (int i = 0; i < argc; ++i) {
     if (argv[i][0] == '-') {
-      for (int j : argv[i]) {
+      string option = argv[i];
+      for (int j = 0; j < option.size(); ++i) {
         if (j == 0) {
-          break
+          break;
         }
-        if (j == 1 and argv[i][j] == '-') {
-          cout << "literal"
+        if (j == 1 and option[j] == '-') {
+          cout << "literal";
         }
       }
     }
