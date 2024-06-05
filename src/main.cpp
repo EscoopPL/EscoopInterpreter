@@ -2,24 +2,36 @@
 #include <fstream>
 using namespace std;
 
+string outputDest = "";
+
+void printHelp() {
+  cout << "Usage: escoop [options] <target>\nOptions:\n\t-h, --help\t\tDisplay this message\n\t-o, --output OUTPUTDEST\tSet destination to output compiled file to\n";
+  exit(0);
+}
+
 void parseOptions(char* argv[], int argc) {
   for (int i = 0; i < argc; ++i) {
     if (argv[i][0] == '-') {
       string option = argv[i];
-      for (int j = 0; j < option.size(); ++i) {
-        if (j == 0) {
-          break;
-        }
-        if (j == 1 and option[j] == '-') {
-          cout << "literal";
-        }
+      if (option == "-h" or option == "--help" or option == "-help") {
+        printHelp();
+      } else if (option == "-o" or option == "--output") {
+        outputDest = argv[i + 1];
+      } else {
+        cout << "Incorrect Usage\n";
+        printHelp();
       }
     }
   }
 }
 
 int main(int argc, char* argv[]) {
+  if (argc == 1) {
+    cout << "Incorrect Usage\n";
+    printHelp();
+  }
   parseOptions(argv, argc);
+  cout << outputDest;
   string line;
   ifstream file(argv[1]);
   while (getline(file, line)) {
