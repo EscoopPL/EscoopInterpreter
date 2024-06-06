@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <string>
+#include "tokens.cpp"
 using namespace std;
 
 string outputDest = "";
@@ -31,13 +33,10 @@ int main(int argc, char* argv[]) {
     printHelp();
   }
   parseOptions(argv, argc);
-  cout << outputDest;
-  string line;
-  ifstream file(argv[1]);
-  while (getline(file, line)) {
-    if (line == "hello") {
-      cout << "Hello to you too!\n";
-    }
+  string* tokensInFile = tokens(argv[argc - 1]);
+  cout << sizeof(tokensInFile) << " Tokens In File.\n";
+  for (int i = 0; i < sizeof(tokensInFile); ++i) {
+    cout << tokensInFile[i] << "\n";
   }
   return 0;
 }

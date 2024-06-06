@@ -1,6 +1,2 @@
-read.es
-hi
-bye
-hello!
-hello
-Hello
+class hello extends object five?
+six
