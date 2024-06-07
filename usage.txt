@@ -1,4 +1,4 @@
 Usage: escoop [options] <target>
 Options:
-	-h, --help				Display this message
+	-h, --help		Display this message
 	-o, --output OUTPUTDEST	Set destination to output compiled file to
