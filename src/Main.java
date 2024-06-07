@@ -1,6 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -9,18 +9,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		parseOptions(args);
-		try {
-			File fileToTokenize = new File(target);
-			Scanner fileReader = new Scanner(fileToTokenize);
-			while (fileReader.hasNextLine()) {
-				String line = fileReader.nextLine();
-				System.out.println(data);
-			}
-		} catch (FileNotFoundException e) {
-
-		}
+		List<String> tokens = tokenize(args);
+		parse(tokens);
 	}
-
 
 	public static void parseOptions(String[] args) {
 		boolean nextCanBeDefault = false;
@@ -49,7 +40,7 @@ public class Main {
 				}
 				break;
 			default:
-				if (!nextCanBeDefault && !(i == args.length - 1)) {
+				if (!nextCanBeDefault != (i == args.length - 1)) {
 					System.out.println("Incorrect Usage:");
 					printHelp();
 				} else {
@@ -62,4 +53,59 @@ public class Main {
 		System.out.println("Usage: escoop [options] <target>\nOptions:\n\t-h, --help\t\tDisplay this message\n\t-o, --output OUTPUTDEST\tSet destination to output compiled file to");
 		System.exit(0);
 	}
+	public static List<String> tokens(String str) {
+		List<String> tokenList = new ArrayList<String>();
+		Scanner tokenizer = new Scanner(str);
+		while (tokenizer.hasNext()) {
+			String token = tokenizer.next();
+			tokenList.add(token);
+		}
+		tokenList.add("\n");
+		tokenizer.close();
+		return tokenList;
+	}
+
+	public static List<String> tokenize(String[] args) {
+		List<String> file = new ArrayList<String>();
+		target = args[args.length - 1];
+		try {
+			File fileToTokenize = new File(target);
+			Scanner fileReader = new Scanner(fileToTokenize);
+			while (fileReader.hasNextLine()) {
+				String line = fileReader.nextLine();
+				List<String> tokens = tokens(line);
+				for (String str : tokens) {
+					file.add(str);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Target file " + target + " does not exist.");
+		}
+		return file;
+	}
+	public static Map parse(List<String> tokens) {
+		Map result = new HaseMap();
+		for (int i = 0; i < tokens.size(); i++) {
+			switch(tokens.get(i)) {
+			case "identifier" {
+				
+			}
+			}
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

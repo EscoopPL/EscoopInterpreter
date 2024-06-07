@@ -1,2 +1,2 @@
-class hello extends object five?
-six
+identifier helloworld.objects.printer
+class printer extends object
