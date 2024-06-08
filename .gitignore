@@ -53,3 +53,5 @@ dkms.conf
 
 lex.yy.c # Flex Output
 *.tab.c # Bison Output
+
+.DS_STORE
