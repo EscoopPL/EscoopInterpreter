@@ -1,2 +1,4 @@
-identifier helloworld.objects.printer
-class printer extends object
+identifier helloworld.runfiles.printer
+runfile printer
+
+print(Hello!)
