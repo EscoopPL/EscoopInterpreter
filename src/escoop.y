@@ -1,5 +1,14 @@
 %{
-	#include <stdio.h>
-	int yylex (void);
-	void yyerror (char const *);
+	#include "lex.yy.c"
 %}
+
+%language "c"
+%define api.value.type {int}
+%token <int> INT
+
+%% /* Grammar rules and actions follow. */
+exp:
+	INT
+;
+%%
+
